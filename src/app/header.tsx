@@ -8,12 +8,12 @@ import { useEffect, useRef, useState } from "react";
 
 export function Header() {
   const headerRef = useRef<HTMLElement>(null);
-  const [isScrolled, setIsScrolled] = useState(
-    globalThis.window ? window.scrollY >= 120 : false,
-  );
+  const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
     const header = headerRef.current;
     if (!header || !window) return;
+    setIsScrolled(window.scrollY >= 120);
     // Get the offset position of the navbar
     const sticky = header.offsetTop;
     const handler = function () {
@@ -22,43 +22,44 @@ export function Header() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, [headerRef]);
+
   return (
     <header
       className={cn("fixed inset-x-0 z-50", {
         "top-0 mx-auto flex h-16 max-w-7xl items-center justify-between gap-5 transition-all duration-100 ease-linear":
           !isScrolled,
-        "animate-fade-in top-6": isScrolled,
+        "top-6 animate-fade-in": isScrolled,
       })}
       ref={headerRef}
     >
       {isScrolled && (
-        <nav className="mx-auto flex w-max items-center rounded-3xl bg-slate-800 p-2 gap-1">
+        <nav className="mx-auto flex w-max items-center gap-1 rounded-3xl bg-slate-800 p-2">
           <NavLink
-            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-600 [&.active]:text-white [&.active]:bg-slate-600"
+            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:bg-slate-600 hover:text-slate-100 [&.active]:bg-slate-600 [&.active]:text-white"
             href="/#home"
           >
             Home
           </NavLink>
           <NavLink
-            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-600 [&.active]:text-white [&.active]:bg-slate-600"
+            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:bg-slate-600 hover:text-slate-100 [&.active]:bg-slate-600 [&.active]:text-white"
             href="/#about"
           >
             About
           </NavLink>
           <NavLink
-            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-600 [&.active]:text-white [&.active]:bg-slate-600"
+            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:bg-slate-600 hover:text-slate-100 [&.active]:bg-slate-600 [&.active]:text-white"
             href="/#skills"
           >
             Skills
           </NavLink>
           <NavLink
-            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-600 [&.active]:text-white [&.active]:bg-slate-600"
-            href="/#projects"
+            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:bg-slate-600 hover:text-slate-100 [&.active]:bg-slate-600 [&.active]:text-white"
+            href="/#experience"
           >
-            Projects
+            Experience
           </NavLink>
           <NavLink
-            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-600 [&.active]:text-white [&.active]:bg-slate-600"
+            className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-400 hover:bg-slate-600 hover:text-slate-100 [&.active]:bg-slate-600 [&.active]:text-white"
             href="/#contact"
           >
             Contact
@@ -89,9 +90,9 @@ export function Header() {
             </Link>
             <Link
               className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-100"
-              href="/#projects"
+              href="/#experience"
             >
-              Projects
+              Experience
             </Link>
             <Link
               className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-100"

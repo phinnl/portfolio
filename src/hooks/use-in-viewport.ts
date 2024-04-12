@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 
 export function useInViewport<T extends HTMLElement = any>() {
