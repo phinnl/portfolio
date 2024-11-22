@@ -1,4 +1,5 @@
 import { About } from "./about";
+import { Contact } from "./contact";
 import { Experience } from "./experience";
 import { Home } from "./home";
 import { Skills } from "./skills";
@@ -10,7 +11,7 @@ export default function HomePage() {
       <About />
       <Skills />
       <Experience />
-      {/* <section className="h-screen" id="contact"></section> */}
+      <Contact />
     </main>
   );
 }

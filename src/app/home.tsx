@@ -1,3 +1,4 @@
+import { TypingAnimation } from "@/components";
 import {
   Facebook,
   FileScan,
@@ -25,16 +26,24 @@ export function Home() {
           <h3 className="text-4xl font-medium text-slate-200">
             I&apos;m Nguyen Long Phin
           </h3>
-          <h2
+          <TypingAnimation
+            sequence={[
+              "I am a Frontend Developer",
+              1000,
+              "I am a Backend Developer",
+              1000,
+              "I am a Full-stack Developer",
+              1000,
+            ]}
+            wrapper="h2"
             className="w-max bg-clip-text text-6xl font-semibold"
             style={{
               backgroundImage:
                 "linear-gradient(120deg, #8b5cf6 40%, #0ea5e9 70%, #d946ef 100%)",
               WebkitTextFillColor: "transparent",
             }}
-          >
-            Frontend Developer
-          </h2>
+            repeat={Infinity}
+          />
           <p className="text-balance text-lg text-slate-200">
             With years of experience in web development, I specialize in
             building and developing stunning and modern user interfaces using
