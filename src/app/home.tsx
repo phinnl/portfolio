@@ -122,25 +122,25 @@ export function Home() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                href="/phinnl_cv.pdf"
+                href="https://www.linkedin.com/in/phinnl/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full md:w-auto gap-2 rounded-3xl bg-gray-900 px-6 py-3 text-base font-medium hover:opacity-70"
+                className="inline-flex min-w-48 w-full md:w-auto gap-2 rounded-3xl bg-violet-500 px-6 py-3 text-base font-medium hover:opacity-70"
               >
                 <FileScan />
-                See my CV
+                Let&apos;s connect
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                href="https://www.linkedin.com/in/phinnl/"
+                href="/phinnl_cv.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full md:w-auto gap-2 rounded-3xl bg-white px-6 py-3 text-base font-medium text-fuchsia-500 hover:opacity-70"
+                className="inline-flex w-full md:w-auto gap-2 rounded-3xl bg-white px-6 py-3 text-base font-medium text-violet-500 hover:opacity-70"
               >
                 <UserRoundPlus />
-                Hire Me
+                Hire me
               </motion.a>
             </div>
             <motion.div

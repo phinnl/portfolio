@@ -1,15 +1,123 @@
+"use client";
+
+import { motion, stagger } from "framer-motion";
+
 export function Experience() {
   return (
-    <section className="bg-black/95 sticky top-0" id="experience">
+    <section id="experience">
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col py-[100px]">
-        <h2 className="sticky top-19 text-center text-4xl font-medium text-slate-200 md:text-5xl lg:text-6xl">
+        <motion.h2
+          initial={{
+            opacity: 0,
+            y: -20,
+          }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="top-19 sticky text-center text-4xl font-medium text-slate-200 md:text-5xl lg:text-6xl"
+        >
           Experience
-        </h2>
+        </motion.h2>
         <div className="mt-10 flex flex-1 flex-col justify-center space-y-5">
           <div className="flex gap-4">
             <div className="flex flex-1 items-start justify-end">
               <p className="w-max rounded-md bg-slate-500 px-3 py-1.5 font-medium">
-                12/2022 – Present
+                10/2024 – 04/2025
+              </p>
+            </div>
+            <div className="flex flex-col justify-center space-y-2">
+              <div className="flex h-6 items-center">
+                <span className="size-5 rounded-full bg-fuchsia-500"></span>
+              </div>
+              <div className="flex flex-1 justify-center">
+                <div className="h-full w-[1px] bg-white"></div>
+              </div>
+            </div>
+            <div className="flex-[3_3_0%] space-y-2">
+              <h3 className="text-xl font-semibold text-slate-200">
+                Viettel Software - Front-end Developer
+              </h3>
+              <div>
+                <h4 className="text-lg font-medium text-slate-300 underline">
+                  Experience
+                </h4>
+                <p className="text-sm text-slate-500">
+                  Developed scalable front-end solutions using React within a
+                  cross-functional team, contributing to a core financial system
+                  for a leading bank.
+                </p>
+                <h4 className="text-lg font-medium text-slate-300 underline">
+                  Key Contributions
+                </h4>
+                <p className="text-sm text-slate-500">
+                  Built and maintained user interfaces for an integrated asset
+                  management and valuation system.
+                </p>
+                <p className="text-sm text-slate-500">
+                  Collaborated closely with back-end developers to implement
+                  APIs and ensure seamless data flow.
+                </p>
+                <p className="text-sm text-slate-500">
+                  Worked alongside UX/UI designers to deliver an intuitive and
+                  consistent user experience.
+                </p>
+                <p className="text-sm text-slate-500">
+                  Delivered a comprehensive asset valuation system within the
+                  first 4 months, including on-site deployment and client
+                  coordination.
+                </p>
+              </div>
+              <div>
+                <h4 className="text-lg font-medium text-slate-300 underline">
+                  Project Highlights
+                </h4>
+                <h5 className="mt-2 text-base font-medium text-slate-400 underline">
+                  MB AMC – Asset Management & Valuation System
+                </h5>
+                <p className="text-sm font-medium text-slate-500">
+                  Client: MB Asset Management Company (MB AMC)
+                </p>
+                <p className="text-sm text-slate-500">
+                  A financial system designed to manage and evaluate assets with
+                  high accuracy and real-time data processing.
+                </p>
+                <p className="text-sm text-slate-500">
+                  Developed key UI components and implemented front-end logic
+                  integrated with back-end services.
+                </p>
+                <p className="text-sm text-slate-500">
+                  Ensured responsive design and usability across devices in
+                  collaboration with UX/UI team.
+                </p>
+                <p className="text-sm text-slate-500">
+                  Participated in agile development cycles, contributing to
+                  timely delivery of critical features.
+                </p>
+                <p className="text-sm text-slate-500">Team Size: 7</p>
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        duration: 0.5,
+                        ease: "easeInOut",
+                        delayChildren: stagger(0.1),
+                      },
+                    },
+                  }}
+                  className="text-sm text-slate-500"
+                >
+                  Technologies: 
+                  React
+                </motion.div>
+              </div>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="flex flex-1 items-start justify-end">
+              <p className="w-max rounded-md bg-slate-500 px-3 py-1.5 font-medium">
+                12/2022 – 10/2024
               </p>
             </div>
             <div className="flex flex-col justify-center space-y-2">

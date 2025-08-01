@@ -17,9 +17,8 @@ import styledComponents from "@/assets/styled-components.svg";
 import tailwind from "@/assets/tailwind-css.svg";
 import typescript from "@/assets/typescript.svg";
 import { cn } from "@/lib";
-import { motion, stagger, useInView, useScroll } from "framer-motion";
+import { motion, stagger } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
 
 const skills_1 = [
   {
@@ -105,38 +104,54 @@ const skills_1 = [
   },
 ];
 
-export function Skills() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, {
-    once: true,
-    margin: "-100px 0px -100px 0px",
-  });
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delayChildren: stagger(0.1),
+    },
+  },
+};
 
+const childVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+  transition: {
+    duration: 0.5,
+    ease: "easeInOut",
+  },
+};
+
+export function Skills() {
   return (
-    <section className="" id="skills" ref={ref}>
+    <section className="" id="skills">
       <div className="mx-auto flex h-screen max-w-7xl flex-col justify-center overflow-hidden py-[100px]">
-        <h2 className="sticky top-19 text-center text-4xl font-medium text-slate-200 md:text-5xl lg:text-6xl">
+        <motion.h2
+          initial={{
+            opacity: 0,
+            y: -20,
+          }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="text-center text-4xl font-medium text-slate-200 md:text-5xl lg:text-6xl"
+        >
           Skills
-        </h2>
+        </motion.h2>
         <div className="mt-10 flex flex-col justify-center space-y-5">
           <motion.div
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ delayChildren: stagger(0.1), duration: 0.5 }}
+            whileInView="visible"
+            variants={containerVariants}
             className={cn(
               "flex flex-wrap items-center justify-between gap-4 transition-all duration-1000 ease-linear",
             )}
           >
             {skills_1.map((skill) => (
               <motion.a
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
+                variants={childVariants}
                 whileHover={{ scale: 0.85 }}
                 key={skill.name}
                 href={skill.href}
