@@ -1,17 +1,29 @@
+import { FollowerProvider, MouseFollower } from "@/components";
+import { Lenis } from "lenis/react";
 import { About } from "./about";
-import { Contact } from "./contact";
 import { Experience } from "./experience";
 import { Home } from "./home";
 import { Skills } from "./skills";
 
 export default function HomePage() {
   return (
-    <main className="relative z-0 mx-auto max-w-7xl">
-      <Home />
-      <About />
-      <Skills />
-      <Experience />
-      <Contact />
-    </main>
+    <>
+      <MouseFollower />
+      <FollowerProvider>
+        <main className="relative z-0 overflow-x-hidden">
+          <Lenis
+            options={{
+              lerp: 0.05,
+            }}
+            root
+          >
+            <Home />
+            <About />
+            <Skills />
+            <Experience />
+          </Lenis>
+        </main>
+      </FollowerProvider>
+    </>
   );
 }

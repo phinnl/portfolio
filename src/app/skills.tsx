@@ -17,8 +17,9 @@ import styledComponents from "@/assets/styled-components.svg";
 import tailwind from "@/assets/tailwind-css.svg";
 import typescript from "@/assets/typescript.svg";
 import { cn } from "@/lib";
+import { motion, stagger, useInView, useScroll } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 const skills_1 = [
   {
@@ -61,9 +62,6 @@ const skills_1 = [
     icon: rust,
     href: "https://www.rust-lang.org/",
   },
-];
-
-const skills_2 = [
   {
     name: "Ant Design",
     icon: antDesign,
@@ -109,93 +107,54 @@ const skills_2 = [
 
 export function Skills() {
   const ref = useRef<HTMLDivElement>(null);
-  const [percent, setPercent] = useState(0);
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-    const percentageSeen = () => {
-      // Get the relevant measurements and positions
-      const viewportHeight = window.innerHeight;
-      const scrollTop = window.scrollY;
-      const elementOffsetTop = element.offsetTop;
-      const elementHeight = element.offsetHeight;
-
-      // Calculate percentage of the element that's been seen
-      const distance = scrollTop + viewportHeight - elementOffsetTop;
-      const percentage = Math.round(
-        distance / ((viewportHeight + elementHeight) / 100),
-      );
-
-      setPercent(Math.min(100, Math.max(0, percentage * 2)));
-    };
-    window.addEventListener("scroll", percentageSeen);
-    return () => window.removeEventListener("scroll", percentageSeen);
+  const inView = useInView(ref, {
+    once: true,
+    margin: "-100px 0px -100px 0px",
   });
+
   return (
-    <section
-      className="flex h-screen flex-col overflow-hidden py-[100px]"
-      id="skills"
-      ref={ref}
-    >
-      <h2 className="text-center text-4xl font-medium text-slate-200">
-        Skills
-      </h2>
-      <div className="mt-10 flex flex-1 flex-col justify-center space-y-5">
-        <div
-          className={cn(
-            "flex flex-wrap items-center justify-between gap-4 transition-all duration-1000 ease-linear",
-          )}
-          style={{
-            transform:
-              percent > 0 ? `translateX(-${100 - percent}%)` : undefined,
-          }}
-        >
-          {skills_1.map((skill) => (
-            <a
-              key={skill.name}
-              href={skill.href}
-              target="_blank"
-              rel="noreferrer"
-              className="flex size-[140px] flex-col items-center justify-center rounded-xl bg-slate-800 p-4 hover:bg-slate-600"
-            >
-              <Image
-                src={skill.icon}
-                alt={skill.name}
-                className="size-12 rounded-md"
-              />
-              <p className="mt-2 min-w-0 max-w-full truncate font-medium text-slate-300">
-                {skill.name}
-              </p>
-            </a>
-          ))}
-        </div>
-        <div
-          className={cn(
-            "animate-slide-to-r flex flex-wrap items-center justify-between gap-4 transition-all duration-1000 ease-linear",
-          )}
-          style={{
-            transform:
-              percent > 0 ? `translateX(${100 - percent}%)` : undefined,
-          }}
-        >
-          {skills_2.map((skill) => (
-            <a
-              key={skill.name}
-              href={skill.href}
-              target="_blank"
-              rel="noreferrer"
-              className="flex size-[140px] flex-col items-center justify-center rounded-xl bg-slate-800 p-4 hover:bg-slate-600"
-            >
-              <Image
-                src={skill.icon}
-                alt={skill.name}
-                className="size-12 rounded-md"
-              />
-              <p className="mt-2 min-w-0 max-w-full truncate font-medium text-slate-300">
-                {skill.name}
-              </p>
-            </a>
-          ))}
+    <section className="" id="skills" ref={ref}>
+      <div className="mx-auto flex h-screen max-w-7xl flex-col justify-center overflow-hidden py-[100px]">
+        <h2 className="sticky top-19 text-center text-4xl font-medium text-slate-200 md:text-5xl lg:text-6xl">
+          Skills
+        </h2>
+        <div className="mt-10 flex flex-col justify-center space-y-5">
+          <motion.div
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ delayChildren: stagger(0.1), duration: 0.5 }}
+            className={cn(
+              "flex flex-wrap items-center justify-between gap-4 transition-all duration-1000 ease-linear",
+            )}
+          >
+            {skills_1.map((skill) => (
+              <motion.a
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                whileHover={{ scale: 0.85 }}
+                key={skill.name}
+                href={skill.href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex size-[140px] flex-col items-center justify-center rounded-xl bg-slate-800 p-4 hover:bg-slate-600"
+              >
+                <Image
+                  src={skill.icon}
+                  alt={skill.name}
+                  className="size-12 rounded-md"
+                />
+                <p className="mt-2 min-w-0 max-w-full truncate font-medium text-slate-300">
+                  {skill.name}
+                </p>
+              </motion.a>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
