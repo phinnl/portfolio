@@ -1,17 +1,20 @@
+"use client";
+
 import { FollowerProvider, MouseFollower } from "@/components";
+import Background from "@/components/background";
 import { Lenis } from "lenis/react";
 import { About } from "./about";
+import DockSection from "./dock";
 import { Experience } from "./experience";
 import { Home } from "./home";
 import { Skills } from "./skills";
-import Background from "@/components/background";
 
 export default function HomePage() {
   return (
     <>
       <MouseFollower />
       <FollowerProvider>
-        <main className="relative z-0 overflow-x-hidden">
+        <main className="relative z-0">
           <Lenis
             options={{
               lerp: 0.05,
@@ -34,6 +37,8 @@ export default function HomePage() {
             <About />
             <Skills />
             <Experience />
+            <DockSection />
+            <div className="h-[25px]"></div>
           </Lenis>
         </main>
       </FollowerProvider>

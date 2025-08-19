@@ -106,20 +106,19 @@ const skills = [
 export function Skills() {
   return (
     <section className="" id="skills">
-      <div className="mx-auto flex h-screen max-w-7xl flex-col justify-center overflow-hidden py-[100px]">
+      <div className="mx-auto flex h-screen max-w-7xl flex-col items-center justify-center overflow-hidden py-10 md:py-[100px]">
         <motion.h2
           initial={{
             opacity: 0,
             y: -20,
           }}
           whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="text-center text-4xl font-medium text-slate-200 md:text-5xl lg:text-6xl"
         >
           Skills
         </motion.h2>
-        <div className="mt-10 flex flex-col justify-center space-y-10 flex-1">
+        <div className="mt-10 flex flex-col justify-center space-y-10 md:flex-1">
           <LogoLoop
             logos={skills.slice(0, skills.length / 2)}
             speed={120}

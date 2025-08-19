@@ -38,7 +38,6 @@ export function Home() {
             <motion.p
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="w-max bg-clip-text text-xl font-medium"
               style={{
@@ -60,7 +59,6 @@ export function Home() {
                 <motion.p
                   initial={{ opacity: 0, x: -120 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 120 }}
                   transition={{ duration: 1, ease: "easeInOut" }}
                   className="inline"
                 >
@@ -69,7 +67,6 @@ export function Home() {
                 <motion.p
                   initial={{ opacity: 0, x: 120 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -120 }}
                   transition={{ duration: 1, ease: "easeInOut" }}
                   className="inline"
                 >
@@ -80,7 +77,6 @@ export function Home() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
               <TypingAnimation
@@ -105,7 +101,6 @@ export function Home() {
             <motion.p
               initial={{ opacity: 0, rotate: 10 }}
               whileInView={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: 10 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="text-balance text-sm text-slate-200 md:text-base"
             >

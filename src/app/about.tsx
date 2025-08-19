@@ -37,7 +37,6 @@ export function About() {
             y: -20,
           }}
           whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="text-center text-4xl font-medium text-slate-200 md:text-5xl lg:text-6xl"
         >
