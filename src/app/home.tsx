@@ -32,9 +32,8 @@ const childVariants = {
 export function Home() {
   return (
     <section className="px-7" id="home">
-      <div className="absolute right-[15%] top-20 h-[400px] w-[300px] rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 opacity-40 blur-[50px] md:blur-[90px]"></div>
       <div className="mx-auto h-dvh max-w-7xl">
-        <div className="flex md:grid h-full grid-cols-[minmax(0,2fr)_minmax(0,1fr)] items-center">
+        <div className="flex h-full grid-cols-[minmax(0,2fr)_minmax(0,1fr)] items-center md:grid">
           <div className="space-y-4">
             <motion.p
               initial={{ opacity: 0, y: -20 }}
@@ -104,11 +103,11 @@ export function Home() {
               />
             </motion.div>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, rotate: 10 }}
+              whileInView={{ opacity: 1, rotate: 0 }}
+              exit={{ opacity: 0, rotate: 10 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="text-balance text-sm md:text-base text-slate-200"
+              className="text-balance text-sm text-slate-200 md:text-base"
             >
               With years of experience in web development, I specialize in
               building and developing stunning and modern user interfaces using
@@ -117,7 +116,7 @@ export function Home() {
               experiences that are responsive, accessible, and meet the needs of
               users.
             </motion.p>
-            <div className="flex flex-col md:flex-row items-center gap-5">
+            <div className="flex flex-col items-center gap-5 md:flex-row">
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -125,7 +124,7 @@ export function Home() {
                 href="https://www.linkedin.com/in/phinnl/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-w-48 w-full md:w-auto gap-2 rounded-3xl bg-violet-500 px-6 py-3 text-base font-medium hover:opacity-70"
+                className="inline-flex w-full min-w-48 gap-2 rounded-3xl bg-violet-500 px-6 py-3 text-base font-medium hover:opacity-70 md:w-auto"
               >
                 <FileScan />
                 Let&apos;s connect
@@ -137,7 +136,7 @@ export function Home() {
                 href="/phinnl_cv.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full md:w-auto gap-2 rounded-3xl bg-white px-6 py-3 text-base font-medium text-violet-500 hover:opacity-70"
+                className="inline-flex w-full gap-2 rounded-3xl bg-white px-6 py-3 text-base font-medium text-violet-500 hover:opacity-70 md:w-auto"
               >
                 <UserRoundPlus />
                 Hire me

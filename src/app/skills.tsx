@@ -16,113 +16,92 @@ import rust from "@/assets/rust.svg";
 import styledComponents from "@/assets/styled-components.svg";
 import tailwind from "@/assets/tailwind-css.svg";
 import typescript from "@/assets/typescript.svg";
-import { cn } from "@/lib";
-import { motion, stagger } from "framer-motion";
-import Image from "next/image";
+import LogoLoop from "@/components/logo-loop";
+import { motion } from "framer-motion";
 
-const skills_1 = [
+const skills = [
   {
-    name: "Javascript",
-    icon: javascript,
+    alt: "Javascript",
+    src: javascript.src,
     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
   {
-    name: "Typescript",
-    icon: typescript,
+    alt: "Typescript",
+    src: typescript.src,
     href: "https://www.typescriptlang.org/",
   },
   {
-    name: "React.js",
-    icon: react,
+    alt: "React.js",
+    src: react.src,
     href: "https://react.dev/",
   },
   {
-    name: "Next.js",
-    icon: next,
+    alt: "Next.js",
+    src: next.src,
     href: "https://nextjs.org/",
   },
   {
-    name: "Nest.js",
-    icon: nest,
+    alt: "Nest.js",
+    src: nest.src,
     href: "https://nestjs.com/",
   },
   {
-    name: "Redux.js",
-    icon: redux,
+    alt: "Redux.js",
+    src: redux.src,
     href: "https://redux.js.org/",
   },
   {
-    name: "React Query",
-    icon: reactQuery,
+    alt: "React Query",
+    src: reactQuery.src,
     href: "https://react-query.tanstack.com/",
   },
   {
-    name: "Rust",
-    icon: rust,
+    alt: "Rust",
+    src: rust.src,
     href: "https://www.rust-lang.org/",
   },
   {
-    name: "Ant Design",
-    icon: antDesign,
+    alt: "Ant Design",
+    src: antDesign.src,
     href: "https://ant.design/",
   },
   {
-    name: "MUI",
-    icon: mui,
+    alt: "MUI",
+    src: mui.src,
     href: "https://mui.com/",
   },
   {
-    name: "Tailwind CSS",
-    icon: tailwind,
+    alt: "Tailwind CSS",
+    src: tailwind.src,
     href: "https://tailwindcss.com/",
   },
   {
-    name: "Styled Components",
-    icon: styledComponents,
+    alt: "Styled Components",
+    src: styledComponents.src,
     href: "https://styled-components.com/",
   },
   {
-    name: "Radix UI",
-    icon: radix,
+    alt: "Radix UI",
+    src: radix.src,
     href: "https://www.radix-ui.com/",
   },
 
   {
-    name: "Prettier",
-    icon: prettier,
+    alt: "Prettier",
+    src: prettier.src,
     href: "https://prettier.io/",
   },
   {
-    name: "Husky",
-    icon: husky,
+    alt: "Husky",
+    src: husky.src,
     href: "https://typicode.github.io/husky/",
   },
   {
-    name: "Git",
-    icon: git,
+    alt: "Git",
+    src: git.src,
     href: "https://git-scm.com/",
   },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delayChildren: stagger(0.1),
-    },
-  },
-};
-
-const childVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-  transition: {
-    duration: 0.5,
-    ease: "easeInOut",
-  },
-};
 
 export function Skills() {
   return (
@@ -140,36 +119,27 @@ export function Skills() {
         >
           Skills
         </motion.h2>
-        <div className="mt-10 flex flex-col justify-center space-y-5">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={containerVariants}
-            className={cn(
-              "flex flex-wrap items-center justify-between gap-4 transition-all duration-1000 ease-linear",
-            )}
-          >
-            {skills_1.map((skill) => (
-              <motion.a
-                variants={childVariants}
-                whileHover={{ scale: 0.85 }}
-                key={skill.name}
-                href={skill.href}
-                target="_blank"
-                rel="noreferrer"
-                className="flex size-[140px] flex-col items-center justify-center rounded-xl bg-slate-800 p-4 hover:bg-slate-600"
-              >
-                <Image
-                  src={skill.icon}
-                  alt={skill.name}
-                  className="size-12 rounded-md"
-                />
-                <p className="mt-2 min-w-0 max-w-full truncate font-medium text-slate-300">
-                  {skill.name}
-                </p>
-              </motion.a>
-            ))}
-          </motion.div>
+        <div className="mt-10 flex flex-col justify-center space-y-10 flex-1">
+          <LogoLoop
+            logos={skills.slice(0, skills.length / 2)}
+            speed={120}
+            direction="left"
+            logoHeight={60}
+            gap={60}
+            pauseOnHover
+            scaleOnHover
+            ariaLabel="Technology partners"
+          />
+          <LogoLoop
+            logos={skills.slice(skills.length / 2)}
+            speed={120}
+            direction="right"
+            logoHeight={60}
+            gap={60}
+            pauseOnHover
+            scaleOnHover
+            ariaLabel="Technology partners"
+          />
         </div>
       </div>
     </section>
