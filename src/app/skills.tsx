@@ -16,8 +16,8 @@ import rust from "@/assets/rust.svg";
 import styledComponents from "@/assets/styled-components.svg";
 import tailwind from "@/assets/tailwind-css.svg";
 import typescript from "@/assets/typescript.svg";
-import LogoLoop from "@/components/logo-loop";
 import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
 
 const skills = [
   {
@@ -119,26 +119,56 @@ export function Skills() {
           Skills
         </motion.h2>
         <div className="mt-10 flex flex-col justify-center space-y-10 md:flex-1">
-          <LogoLoop
-            logos={skills.slice(0, skills.length / 2)}
-            speed={120}
-            direction="left"
-            logoHeight={60}
-            gap={60}
-            pauseOnHover
-            scaleOnHover
-            ariaLabel="Technology partners"
-          />
-          <LogoLoop
-            logos={skills.slice(skills.length / 2)}
-            speed={120}
-            direction="right"
-            logoHeight={60}
-            gap={60}
-            pauseOnHover
-            scaleOnHover
-            ariaLabel="Technology partners"
-          />
+          <Marquee gradient={false} speed={120} pauseOnHover direction="left">
+            <div className="flex items-center justify-center gap-16">
+              {skills.slice(0, skills.length / 2).map((skill) => (
+                <motion.a
+                  key={skill.alt}
+                  href={skill.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center"
+                  style={{ borderRadius: "12px" }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                  <motion.img
+                    src={skill.src}
+                    alt={skill.alt}
+                    className="block h-16 w-auto object-cover"
+                    whileHover={{ scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                  ></motion.img>
+                </motion.a>
+              ))}
+            </div>
+          </Marquee>
+          <Marquee gradient={false} speed={120} pauseOnHover direction="right">
+            <div className="flex items-center justify-center gap-16">
+              {skills.slice(skills.length / 2).map((skill) => (
+                <motion.a
+                  key={skill.alt}
+                  href={skill.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center"
+                  style={{ borderRadius: "12px" }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                  <motion.img
+                    src={skill.src}
+                    alt={skill.alt}
+                    className="block h-16 w-auto object-cover"
+                    whileHover={{ scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                  ></motion.img>
+                </motion.a>
+              ))}
+            </div>
+          </Marquee>
         </div>
       </div>
     </section>
